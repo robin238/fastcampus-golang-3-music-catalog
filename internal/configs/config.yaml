@@ -1,0 +1,7 @@
+service:
+  port: ":9999"
+  secretJWT: "fastcampustest"
+
+database:
+  # dataSourceName: "root:password@tcp(localhost:3306)/fastcampus?parseTime=true&loc=Local"
+  dataSourceName: "postgres://admin@root@localhost:5432/fastcampus_db?sslmode=disable"
