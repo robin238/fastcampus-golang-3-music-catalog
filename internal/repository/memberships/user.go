@@ -1,9 +1,11 @@
 package memberships
 
-import "github.com/robin238/fastcampus-golang-3-music-catalog/internal/models/memberships"
+import (
+	"github.com/robin238/fastcampus-golang-3-music-catalog/internal/models/memberships"
+)
 
 func (r *repository) CreateUser(model memberships.User) error {
-	return r.db.Create(model).Error
+	return r.db.Create(&model).Error
 }
 
 func (r *repository) GetUser(email, username string, id int)  (*memberships.User ,error) {
