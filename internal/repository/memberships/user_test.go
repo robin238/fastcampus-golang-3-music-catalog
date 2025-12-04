@@ -127,7 +127,7 @@ func Test_repository_GetUser(t *testing.T) {
 	type args struct{
 		email string
 		username string
-		id int
+		id uint
 	}
 
 	tests := []struct {

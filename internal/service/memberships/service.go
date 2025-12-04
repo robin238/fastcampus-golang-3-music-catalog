@@ -5,9 +5,11 @@ import (
 	"github.com/robin238/fastcampus-golang-3-music-catalog/internal/models/memberships"
 )
 
+//go:generate mockgen -source=service.go -destination=service_mock_test.go -package=memberships
+
 type repository interface {
 	CreateUser(model memberships.User) error
-	GetUser(email, username string, id int) (*memberships.User, error)
+	GetUser(email, username string, id uint) (*memberships.User ,error)
 }
 
 type service struct {

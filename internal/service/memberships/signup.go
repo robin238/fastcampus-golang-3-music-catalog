@@ -6,13 +6,14 @@ import (
 	"github.com/robin238/fastcampus-golang-3-music-catalog/internal/models/memberships"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/crypto/bcrypt"
+	"gorm.io/gorm"
 )
 
-func (s service) SignUp(request memberships.SignUpRequest) error {
+func (s *service) SignUp(request memberships.SignUpRequest) error {
 
-	existingUser, err := s.repository.GetUser(request.Email , request.Username, 0)
-	if err !=nil {
-		log.Error().Err(err).Msg("user already exist")
+	existingUser, err := s.repository.GetUser(request.Email , request.Username, uint(0))
+	if err !=nil && err != gorm.ErrRecordNotFound {
+		log.Error().Err(err).Msg("error get user from database")
 		return err
 	}
 
